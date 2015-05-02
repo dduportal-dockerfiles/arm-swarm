@@ -3,7 +3,7 @@ MAINTAINER Damien DUPORTAL <damien.duportal@gmail.com>
 
 ENV SWARM_VERSION 0.2.0
 
-# Get swarm souce code, got to wanted version and build
+# Get swarm source code, got to wanted version and build
 RUN go get github.com/tools/godep
 RUN git clone https://github.com/docker/swarm "${GOPATH}/src/github.com/docker/swarm"
 WORKDIR ${GOPATH}/src/github.com/docker/swarm
