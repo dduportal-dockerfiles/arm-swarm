@@ -1,0 +1,19 @@
+FROM dduportal/arm-godev:1.4.1
+MAINTAINER Damien DUPORTAL <damien.duportal@gmail.com>
+
+ENV SWARM_VERSION 0.2.0
+
+# Get swarm souce code, got to wanted version and build
+RUN go get github.com/tools/godep
+RUN git clone https://github.com/docker/swarm "${GOPATH}/src/github.com/docker/swarm"
+WORKDIR ${GOPATH}/src/github.com/docker/swarm
+RUN git checkout "v${SWARM_VERSION}"
+RUN godep go install .
+
+# Embed all the things inside /arm-swarm-dist.tar.gz
+WORKDIR /
+RUN mkdir -p /arm-swarm-dist \
+	&& cp "${GOPATH}/src/github.com/docker/swarm/bin/swarm" /arm-swarm-dist/ \
+	&& tar czf /arm-swarm-dist.tgz /arm-swarm-dist
+
+CMD ["cat","/arm-swarm-dist.tgz"]
