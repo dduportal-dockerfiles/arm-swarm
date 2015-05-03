@@ -7,7 +7,6 @@ COPY ./arm-swarm-dist.tgz /
 
 RUN tar xzf /arm-swarm-dist.tgz \
 	&& mv /arm-swarm-dist/swarm /bin/ \
-	&& mv /arm-swarm-dist/ui / \
 	&& rm -rf /arm-swarm-dist* \
 	&& chmod a+x /bin/*
 

@@ -13,7 +13,7 @@ RUN godep go install .
 # Embed all the things inside /arm-swarm-dist.tar.gz
 WORKDIR /
 RUN mkdir -p /arm-swarm-dist \
-	&& cp "${GOPATH}/src/github.com/docker/swarm/bin/swarm" /arm-swarm-dist/ \
+	&& cp "${GOPATH}/bin/swarm" /arm-swarm-dist/ \
 	&& tar czf /arm-swarm-dist.tgz /arm-swarm-dist
 
 CMD ["cat","/arm-swarm-dist.tgz"]
