@@ -3,7 +3,7 @@ MAINTAINER Damien DUPORTAL <damien.duportal@gmail.com>
 
 COPY ./arm-swarm-dist.tgz /
 
-# From https://github.com/docker/swarm/blob/master/Dockerfile 
+RUN apk --update add ca-certificates
 
 RUN tar xzf /arm-swarm-dist.tgz \
 	&& mv /arm-swarm-dist/swarm /bin/ \
